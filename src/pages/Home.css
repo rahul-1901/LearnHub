@@ -1,0 +1,12 @@
+@import "tailwindcss";
+.buttonImp {
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+/* .courseImage {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: fixed;
+} */

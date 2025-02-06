@@ -1,0 +1,6 @@
+.signUp {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 40vw;
+}

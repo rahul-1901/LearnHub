@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(249, 250, 251);
+}
+/* 
+img {
+    background-size: cover;
+    background-repeat: no-repeat;
+} */
+/* Light Mode Styles (default) */
+/* body {
+    background-color: rgb(249, 250, 251);
+    color: #000000;
+  }
+  
+  /* Dark Mode Styles */
+ /* .dark body {
+    background-color: #333333;
+    color: #ffffff;
+}   */ 
+
+/* 
+.bodyHigh {
+  background-color: red;
+} */
+  
