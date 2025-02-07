@@ -28,7 +28,11 @@ const Courses = () => {
             const response = await purchaseCourse(courseId);
             toast.success(response.message, {position: "top-center", autoClose: 1000});
         } catch (error) {
-            toast.error("Purchase failed", {position: "top-center", autoClose: 1000});
+            if(localStorage.getItem("admin") === "true") {
+                toast.warn("Register as User!!", {position: "top-center", autoClose: 1000});
+            } else {
+                toast.error("Purchase failed!!", {position: "top-center", autoClose: 1000});
+            }
         }
     }
 
