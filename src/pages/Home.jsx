@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getCourses, purchaseCourse } from '../backendApi/api';
 import "./Home.css";
 import { Link } from "react-router-dom";
-import { Star, Clock, Users, PlusCircle } from 'lucide-react';
+import { Star, Clock, Users, PlusCircle, ServerOff } from 'lucide-react';
 import Navbar from './Navbar';
 
 const Home = () => {
@@ -43,71 +43,91 @@ const Home = () => {
   }, [])
   return (
     <body>
-      <Navbar setIsAdmin={setIsAdmin}/>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-20">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
-            Study at our premium platform of education
-          </h1>
-          <p className="text-xl text-gray-600">
-            Learn from industry experts and advance your career
-          </p>
-        </div>
+      <Navbar setIsAdmin={setIsAdmin} />
+      {showCourses ? (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-20">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Study at our premium platform of education
+            </h1>
+            <p className="text-xl text-gray-600">
+              Learn from industry experts and advance your career
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {courses.map((course) => (
-            <div key={course.id} className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105">
-              <img src={course.imageLink} alt={course.title} className="w-full h-48 courseImage" />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                  {course.title}
-                </h3>
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="flex items-center">
-                    <Star className="h-5 w-5 text-yellow-400" />
-                    <span className="ml-1 text-gray-700">{course.stars}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Users className="h-5 w-5 text-gray-400" />
-                    <span className="ml-1 text-gray-700">{course.customers}</span>
-                  </div>
-                  <div className="flex items-center">
-                    <Clock className="h-5 w-5 text-gray-400" />
-                    <span className="ml-1 text-gray-700">{course.courseTime}</span>
-                  </div>
-                </div>
 
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl font-bold text-gray-900">
-                    &#8377;{course.price}
-                  </span>
-                  <Link
-                    to={`/courses/${course._id}`}
-                    className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition duration-150"
-                  >
-                    Learn More
-                  </Link>
-                  {/* <button onClick={() => handlePurchase(course._id)}>LearnMore</button> */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {courses.map((course) => (
+              <div key={course.id} className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                <img src={course.imageLink} alt={course.title} className="w-full h-48 courseImage" />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    {course.title}
+                  </h3>
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="flex items-center">
+                      <Star className="h-5 w-5 text-yellow-400" />
+                      <span className="ml-1 text-gray-700">{course.stars}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Users className="h-5 w-5 text-gray-400" />
+                      <span className="ml-1 text-gray-700">{course.customers}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Clock className="h-5 w-5 text-gray-400" />
+                      <span className="ml-1 text-gray-700">{course.courseTime}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between">
+                    <span className="text-2xl font-bold text-gray-900">
+                      &#8377;{course.price}
+                    </span>
+                    <Link
+                      to={`/courses/${course._id}`}
+                      className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition duration-150"
+                    >
+                      Learn More
+                    </Link>
+                    {/* <button onClick={() => handlePurchase(course._id)}>LearnMore</button> */}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-          {isAdmin &&
-            <Link
-              to="/admin/courses"
-              className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105 border-2 border-dashed border-gray-300 dark:border-gray-700 flex flex-col items-center justify-center h-full min-h-[384px]"
-            >
-              <PlusCircle className="h-16 w-16 text-gray-500 mb-4" />
-              <h3 className="text-xl font-semibold text-gray-800">
-                Add New Course
-              </h3>
-              <p className="text-gray-600 text-center mt-2 px-4">
-                Create and publish a new course
-              </p>
-            </Link>
-          }
+            ))}
+            {isAdmin &&
+              <Link
+                to="/admin/courses"
+                className="bg-white rounded-xl shadow-lg overflow-hidden transition-transform hover:scale-105 border-2 border-dashed border-gray-300 dark:border-gray-700 flex flex-col items-center justify-center h-full min-h-[384px]"
+              >
+                <PlusCircle className="h-16 w-16 text-gray-500 mb-4" />
+                <h3 className="text-xl font-semibold text-gray-800">
+                  Add New Course
+                </h3>
+                <p className="text-gray-600 text-center mt-2 px-4">
+                  Create and publish a new course
+                </p>
+              </Link>
+            }
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="flex items-center justify-center min-h-screen">
+          <div className="max-w-2xl w-full rounded-2xl p-8 md:p-12 text-center">
+            <div className="flex justify-center mb-6">
+              <div className="bg-red-50 p-4 rounded-full">
+                <ServerOff className="w-12 h-12 text-red-500" />
+              </div>
+            </div>
+
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              We'll be back soon!
+            </h1>
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              "Server Down"
+            </h1>
+          </div>
+        </div>
+      )}
       {/* <div>
                 <button onClick={fetchCourses}>Courses</button>
             </div> */}
