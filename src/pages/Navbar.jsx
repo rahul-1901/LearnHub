@@ -41,16 +41,16 @@ const Navbar = (props) => {
               <span className="text-xl font-bold text-gray-900">LearnHub</span>
             </Link>
             <div className="hidden md:flex items-center space-x-4">
-              <Link to="/signin" className="text-gray-700 hover:text-indigo-600">SignIn</Link>
+              <Link to="/signin" className="text-gray-700 hover:text-indigo-600 cursor-pointer">SignIn</Link>
               <Link
                 to="/signup"
-                className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-150"
+                className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition duration-150 cursor-pointer"
               >
                 SignUp
               </Link>
               <button
                 onClick={logOut}
-                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-150"
+                className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-150 cursor-pointer"
               >
                 Logout
               </button>
