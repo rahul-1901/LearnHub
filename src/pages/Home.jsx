@@ -119,11 +119,11 @@ const Home = () => {
               </div>
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              We'll be back soon!
+            <h1 className="text-2xl md:text-3xl text-gray-900 mb-4">
+              We're working to restore service
             </h1>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              "Server Down"
+            <h1 className="text-1xl md:text-2xl text-gray-900 mb-4">
+              Server Down Temporarily...
             </h1>
           </div>
         </div>
