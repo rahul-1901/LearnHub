@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://learn-hub-backend-u8g4.vercel.app";
+const API_URL = import.meta.env.VITE_API_LINK;
 
 export const getCourses = async () => {
     try {
